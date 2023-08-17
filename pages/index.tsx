@@ -16,6 +16,10 @@ import { ServiceMapProps } from '@ircsignpost/signpost-base/dist/src/service-map
 import {
   CategoryWithSections,
   ZendeskCategory,
+  getArticle,
+  getCategories,
+  getCategoriesWithSections,
+  getTranslationsFromDynamicContent,
 } from '@ircsignpost/signpost-base/dist/src/zendesk';
 import type { NextPage } from 'next';
 import { GetStaticProps } from 'next';
@@ -44,7 +48,7 @@ import {
   getZendeskLocaleId,
 } from '../lib/locale';
 import { getHeaderLogoProps } from '../lib/logo';
-import { getMenuItems } from '../lib/menu';
+import { getFooterItems, getMenuItems } from '../lib/menu';
 import { SocialMediaLinks, getSocialMediaProps } from '../lib/social-media';
 import {
   COMMON_DYNAMIC_CONTENT_PLACEHOLDERS,
@@ -56,13 +60,6 @@ import {
   populateSocialMediaLinks,
 } from '../lib/translations';
 import { getZendeskMappedUrl, getZendeskUrl } from '../lib/url';
-// TODO Use real Zendesk API implementation.
-import {
-  getArticle,
-  getCategories,
-  getCategoriesWithSections,
-  getTranslationsFromDynamicContent,
-} from '../lib/zendesk-fake';
 
 interface HomeProps {
   currentLocale: Locale;
@@ -75,6 +72,7 @@ interface HomeProps {
   // The HTML text of the About Us category shown on the home page.
   aboutUsTextHtml: string;
   categories: ZendeskCategory[] | CategoryWithSections[];
+  footerLinks?: MenuOverlayItem[];
 }
 
 const Home: NextPage<HomeProps> = ({
@@ -86,6 +84,7 @@ const Home: NextPage<HomeProps> = ({
   serviceMapProps,
   aboutUsTextHtml,
   categories,
+  footerLinks,
 }) => {
   const { publicRuntimeConfig } = getConfig();
 
@@ -106,6 +105,7 @@ const Home: NextPage<HomeProps> = ({
       aboutUsTextHtml={aboutUsTextHtml}
       categories={categories}
       signpostVersion={publicRuntimeConfig?.version}
+      footerLinks={footerLinks}
       cookieBanner={
         <CookieBanner
           strings={strings.cookieBannerStrings}
@@ -117,7 +117,7 @@ const Home: NextPage<HomeProps> = ({
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const currentLocale: Locale = getLocaleFromCode(locale ?? 'en-us');
+  const currentLocale: Locale = getLocaleFromCode(locale ?? 'es');
   let dynamicContent = await getTranslationsFromDynamicContent(
     getZendeskLocaleId(currentLocale),
     COMMON_DYNAMIC_CONTENT_PLACEHOLDERS.concat(
@@ -182,6 +182,10 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const populations = await getDirectusPopulationsServed(directus);
   const accessibility = await getDirectusAccessibility(directus);
 
+  const footerLinks = getFooterItems(
+    populateMenuOverlayStrings(dynamicContent),
+    categories
+  );
   return {
     props: {
       currentLocale,
@@ -202,6 +206,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
       },
       categories,
       aboutUsTextHtml,
+      footerLinks,
     },
     revalidate: REVALIDATION_TIMEOUT_SECONDS,
   };
