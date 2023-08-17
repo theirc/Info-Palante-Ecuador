@@ -16,6 +16,7 @@ import {
 export interface CustomMenuOverlayStrings extends MenuOverlayStrings {
   information: string;
   about: string;
+  disclaimer: string;
 }
 
 // TODO Update footer items if needed.
@@ -24,7 +25,11 @@ export function getFooterItems(
   categories: ZendeskCategory[] | CategoryWithSections[]
 ): MenuOverlayItem[] {
   let items: MenuOverlayItem[] = [];
-  items.push({ key: 'home', label: strings.home, href: '/' });
+  items.push({
+    key: 'disclaimer',
+    label: strings.disclaimer,
+    href: `/articles/12998010069277`,
+  });
   return items;
 }
 
