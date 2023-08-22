@@ -31,7 +31,7 @@ export default function LocaleSelectPage() {
   return (
     <LocaleSelectPageBase
       siteTitle={SITE_TITLE}
-      message={'Please choose your preferred language'}
+      message={"Bienvenidos a Info Pa'lante"}
       langs={langs}
       image={<Image src={logo} alt="icon" />}
     />
