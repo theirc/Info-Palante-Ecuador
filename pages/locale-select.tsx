@@ -7,7 +7,7 @@ import type { Lang } from '@ircsignpost/signpost-base/dist/src/locale-select-pag
 import Image from 'next/image';
 
 import { SITE_TITLE } from '../lib/constants';
-import logo from '../public/info-palante-ecuador-logo-white.png';
+import logo from '../public/info-palante-ecuador-logo.png';
 
 const langs: Lang[] = [
   {
