@@ -68,6 +68,7 @@ export const COMMON_DYNAMIC_CONTENT_PLACEHOLDERS = [
   'default_saturday_label',
   'default_sunday_label',
   'default_menu_disclaimer_title',
+  'default_menu_services_title',
 ];
 
 export const HOME_PAGE_DYNAMIC_CONTENT_PLACEHOLDERS = [
@@ -111,6 +112,12 @@ export const HOME_PAGE_DYNAMIC_CONTENT_PLACEHOLDERS = [
   'default_seach_input_text',
   'default_contact_button_label',
   'default_view_service_label',
+  'default_contact_button_label',
+  'default_view_service_label',
+  'labelProvider',
+  'labelAccessibility',
+  'labelServicesTypes',
+  'labelPopulations',
 ];
 
 export const CATEGORY_PLACEHOLDERS = [
@@ -202,6 +209,10 @@ export function populateServiceMapStrings(dynamicContent: {
     },
     popupStrings: populatePopupStrings(dynamicContent),
     labelSearchInput: { label: dynamicContent['default_seach_input_text'] },
+    labelProvider: dynamicContent['labelProvider'],
+    labelAccessibility: dynamicContent['labelAccessibility'],
+    labelPopulations: dynamicContent['labelPopulations'],
+    labelServicesTypes: dynamicContent['labelServicesTypes'],
   };
 }
 
@@ -285,8 +296,6 @@ export function getSelectTopicLabel(dynamicContent: {
   return dynamicContent['default_select_topic'];
 }
 
-// TODO(annkats): add populateServiceMapStrings() once Service map becomes a Shared component.
-
 export function populateArticleContentStrings(dynamicContent: {
   [key: string]: string;
 }): ArticleContentStrings {
@@ -304,6 +313,7 @@ export function populateMenuOverlayStrings(dynamicContent: {
     information: dynamicContent['default_information_title'],
     about: dynamicContent['default_menu_about_title'],
     disclaimer: dynamicContent['default_menu_disclaimer_title'],
+    services: dynamicContent['default_menu_services_title'],
   };
 }
 
@@ -405,7 +415,6 @@ export function populateFilterSelectStrings(dynamicContent: {
     mostPopular: dynamicContent['default_most_popular_filter_option'],
   };
 }
-
 export function populatePopupStrings(dynamicContent: {
   [key: string]: string;
 }): PopupStrings {
