@@ -8,11 +8,13 @@ import { FooterStrings } from '@ircsignpost/signpost-base/dist/src/footer';
 import { HeaderBannerStrings } from '@ircsignpost/signpost-base/dist/src/header-banner';
 import { HomePageStrings } from '@ircsignpost/signpost-base/dist/src/home-page';
 import { CardsListStrings } from '@ircsignpost/signpost-base/dist/src/home-page-cards-list';
+import { PopupStrings } from '@ircsignpost/signpost-base/dist/src/map';
 import { SearchBarStrings } from '@ircsignpost/signpost-base/dist/src/search-bar';
 import { SearchResultsPageStrings } from '@ircsignpost/signpost-base/dist/src/search-results-page';
 import { SearchResultsStrings } from '@ircsignpost/signpost-base/dist/src/search-results-page-content';
 import { SectionStrings } from '@ircsignpost/signpost-base/dist/src/section-page';
 import { ServiceMapStrings } from '@ircsignpost/signpost-base/dist/src/service-map';
+import { ServicePageStrings } from '@ircsignpost/signpost-base/dist/src/service-page';
 import { ShareButtonStrings } from '@ircsignpost/signpost-base/dist/src/share-button';
 
 import { CustomMenuOverlayStrings } from './menu';
@@ -41,6 +43,7 @@ export const COMMON_DYNAMIC_CONTENT_PLACEHOLDERS = [
   'default_most_popular_filter_option',
   'default_home_disclaimer',
   'default_menu_disclaimer_title',
+  'default_menu_services_title',
 ];
 
 export const HOME_PAGE_DYNAMIC_CONTENT_PLACEHOLDERS = [
@@ -76,6 +79,17 @@ export const HOME_PAGE_DYNAMIC_CONTENT_PLACEHOLDERS = [
   'DEFAULT_SERVICE_MAP_ALL_CITIES_OPTION',
   'DEFAULT_SERVICE_MAP_ALL_CATEGORIES_OPTION',
   'default_service_map_my_location_option',
+  'default_all_services_type_option',
+  'default_all_providers_option',
+  'default_all_populations_option',
+  'default_all_accessibilities_option',
+  'default_distance_away_tooltip',
+  'default_contact_button_label',
+  'default_view_service_label',
+  'labelProvider',
+  'labelAccessibility',
+  'labelServicesTypes',
+  'labelPopulations',
 ];
 
 export const CATEGORY_PLACEHOLDERS = [
@@ -157,11 +171,19 @@ export function populateServiceMapStrings(dynamicContent: {
     allCategoriesOption:
       dynamicContent['DEFAULT_SERVICE_MAP_ALL_CATEGORIES_OPTION'],
     myLocationOption: dynamicContent['default_service_map_my_location_option'],
-    allAccessibilitiesOption: '',
-    allPopulationsOption: '',
-    allProvidersOption: '',
-    allServicesTypeOption: '',
-    distanceAwayStrings: { informationTooltip: '' },
+    allServicesTypeOption: dynamicContent['default_all_services_type_option'],
+    allProvidersOption: dynamicContent['default_all_providers_option'],
+    allPopulationsOption: dynamicContent['default_all_populations_option'],
+    allAccessibilitiesOption:
+      dynamicContent['default_all_accessibilities_option'],
+    distanceAwayStrings: {
+      informationTooltip: dynamicContent['default_distance_away_tooltip'],
+    },
+    popupStrings: populatePopupStrings(dynamicContent),
+    labelProvider: dynamicContent['labelProvider'],
+    labelAccessibility: dynamicContent['labelAccessibility'],
+    labelPopulations: dynamicContent['labelPopulations'],
+    labelServicesTypes: dynamicContent['labelServicesTypes'],
   };
 }
 
@@ -245,8 +267,6 @@ export function getSelectTopicLabel(dynamicContent: {
   return dynamicContent['default_select_topic'];
 }
 
-// TODO(annkats): add populateServiceMapStrings() once Service map becomes a Shared component.
-
 export function populateArticleContentStrings(dynamicContent: {
   [key: string]: string;
 }): ArticleContentStrings {
@@ -264,6 +284,7 @@ export function populateMenuOverlayStrings(dynamicContent: {
     information: dynamicContent['default_information_title'],
     about: dynamicContent['default_menu_about_title'],
     disclaimer: dynamicContent['default_menu_disclaimer_title'],
+    services: dynamicContent['default_menu_services_title'],
   };
 }
 
@@ -363,5 +384,26 @@ export function populateFilterSelectStrings(dynamicContent: {
     filterLabel: dynamicContent['default_filter_label'],
     mostRecent: dynamicContent['default_most_recent_filter_option'],
     mostPopular: dynamicContent['default_most_popular_filter_option'],
+  };
+}
+export function populatePopupStrings(dynamicContent: {
+  [key: string]: string;
+}): PopupStrings {
+  return {
+    contactButtonLabel: dynamicContent['default_contact_button_label'],
+    viewServiceLabel: dynamicContent['default_view_service_label'],
+  };
+}
+
+export function populateServicePageStrings(dynamicContent: {
+  [key: string]: string;
+}): ServicePageStrings {
+  return {
+    serviceContentStrings: populateArticleContentStrings(dynamicContent),
+    searchBarStrings: populateSearchBarStrings(dynamicContent),
+    cookieBannerStrings: populateCookieBannerStrings(dynamicContent),
+    serviceErrorStrings: generateArticleErrorProps(dynamicContent),
+    lastUpdatedLabel: getLastUpdatedLabel(dynamicContent),
+    footerStrings: populateFooterStrings(dynamicContent),
   };
 }

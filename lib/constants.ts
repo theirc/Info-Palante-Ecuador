@@ -61,10 +61,9 @@ export const ALGOLIA_SEARCH_APP_ID = 'BWATZIXLX6';
 export const ALGOLIA_SEARCH_API_KEY = '0d9093280e7b2bc2b6ca12ed4180fd0a';
 
 // See README for more info on how to create indexes.
-export const ALGOLIA_ARTICLE_INDEX_NAME =
-  'zendesk_info-palante-ecuador_articles';
+export const ALGOLIA_ARTICLE_INDEX_NAME = 'zendesk_signpost-ecuador_articles';
 export const ALGOLIA_QUERY_INDEX_NAME =
-  'zendesk_info-palante-ecuador_articles_query_suggestions';
+  'zendesk_signpost-ecuador_articles_query_suggestions';
 
 export const SEARCH_BAR_INDEX: AlgoliaSearchIndex = {
   appId: ALGOLIA_SEARCH_APP_ID,
@@ -77,3 +76,7 @@ export const SEARCH_RESULTS_PAGE_INDEX: AlgoliaSearchIndex = {
   publicApiKey: ALGOLIA_SEARCH_API_KEY,
   indexName: ALGOLIA_ARTICLE_INDEX_NAME,
 };
+
+export const DIRECTUS_AUTH_TOKEN = process.env.DIRECTUS_TOKEN ?? '';
+export const DIRECTUS_COUNTRY_ID = 18;
+export const DIRECTUS_INSTANCE = 'https://directus-irc.azurewebsites.net/';
