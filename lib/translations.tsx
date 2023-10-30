@@ -67,26 +67,27 @@ export const COMMON_DYNAMIC_CONTENT_PLACEHOLDERS = [
   'default_friday_label',
   'default_saturday_label',
   'default_sunday_label',
+  'default_menu_disclaimer_title',
+  'default_menu_services_title',
 ];
 
 export const HOME_PAGE_DYNAMIC_CONTENT_PLACEHOLDERS = [
   // Header banner and social media strings.
-  /*
-   * TODO: create Dynamic content ID for mission statement.
-  '<website_name>_mission_statement',
-   */
+  'signpost_info_palante-ecuador_mission_statement',
   'default_banner_social_media_title',
   'default_banner_social_media_description',
   'default_banner_facebook_title',
   'default_banner_messenger_title',
   'default_banner_whatsapp_title',
+  'default_banner_instagram_title',
+  'signpost_info_palante-ecuador_facebook_link',
+  'signpost_info_palante-ecuador_messenger_link',
+  'signpost_info_palante-ecuador_whatsapp_link',
+  'signpost_info_palante-ecuador_instagram_link',
+
   // Main body strings.
   'default_information_title',
-  /*
-  //TODO: Replace and create customized dynamic content for information description.
-  '<site_prefix>_information_description',
-  */
-  'default_information_description',
+  'signpost_info_palante-ecuador_information_description',
   'default_service_map_title',
   'default_service_map_description',
   'default_service_map_select_region',
@@ -99,9 +100,9 @@ export const HOME_PAGE_DYNAMIC_CONTENT_PLACEHOLDERS = [
   'default_service_map_map_tab',
   'default_service_map_list_tab',
   'default_service_map_all_services',
-  'default_service_map_all_regions_option',
-  'default_service_map_all_cities_option',
-  'default_service_map_all_categories_option',
+  'DEFAULT_SERVICE_MAP_ALL_REGIONS_OPTION',
+  'DEFAULT_SERVICE_MAP_ALL_CITIES_OPTION',
+  'DEFAULT_SERVICE_MAP_ALL_CATEGORIES_OPTION',
   'default_service_map_my_location_option',
   'default_all_services_type_option',
   'default_all_providers_option',
@@ -111,6 +112,12 @@ export const HOME_PAGE_DYNAMIC_CONTENT_PLACEHOLDERS = [
   'default_seach_input_text',
   'default_contact_button_label',
   'default_view_service_label',
+  'default_contact_button_label',
+  'default_view_service_label',
+  'labelProvider',
+  'labelAccessibility',
+  'labelServicesTypes',
+  'labelPopulations',
 ];
 
 export const CATEGORY_PLACEHOLDERS = [
@@ -135,25 +142,25 @@ export const ERROR_DYNAMIC_CONTENT_PLACEHOLDERS = [
   'default_error_home_button_title',
 ];
 
-// TODO: Ask your Product manager to get Social media links.
 export function populateSocialMediaLinks(dynamicContent: {
   [key: string]: string;
 }): SocialMediaLinks {
   return {
     facebookLink: {
       title: dynamicContent['default_banner_facebook_title'],
-      // TODO: create Dynamic content with link to Facebook page
-      href: '', // dynamicContent['<site_prefix>_facebook_link']
+      href: dynamicContent['signpost_info_palante-ecuador_facebook_link'],
     },
     whatsappLink: {
       title: dynamicContent['default_banner_whatsapp_title'],
-      // TODO: create Dynamic content with link to Whatsapp page
-      href: '', // dynamicContent['<site_prefix>_whatsapp_link']
+      href: dynamicContent['signpost_info_palante-ecuador_whatsapp_link'],
     },
     messengerLink: {
       title: dynamicContent['default_banner_messenger_title'],
-      // TODO: create Dynamic content with link to Messenger page
-      href: '', // dynamicContent['<site_prefix>_messenger_link']
+      href: dynamicContent['signpost_info_palante-ecuador_messenger_link'],
+    },
+    instagramLink: {
+      title: dynamicContent['default_banner_instagram_title'],
+      href: dynamicContent['signpost_info_palante-ecuador_instagram_link'],
     },
   };
 }
@@ -162,8 +169,8 @@ export function populateHeaderBannerStrings(dynamicContent: {
   [key: string]: string;
 }): HeaderBannerStrings {
   return {
-    // TODO: replace welcomeTitle with website-specific Dynamic content ID.
-    welcomeTitle: 'Welcome text.', // dynamicContent['<site_prefix>_mission_statement'],
+    welcomeTitle:
+      dynamicContent['signpost_info_palante-ecuador_mission_statement'],
     socialMediaTitle: dynamicContent['default_banner_social_media_title'],
     socialMediaDescription:
       dynamicContent['default_banner_social_media_description'],
@@ -187,10 +194,10 @@ export function populateServiceMapStrings(dynamicContent: {
       dynamicContent['default_services_list_count_services'],
     mapTab: dynamicContent['default_service_map_map_tab'],
     listTab: dynamicContent['default_service_map_list_tab'],
-    allRegionsOption: dynamicContent['default_service_map_all_regions_option'],
-    allCitiesOption: dynamicContent['default_service_map_all_cities_option'],
+    allRegionsOption: dynamicContent['DEFAULT_SERVICE_MAP_ALL_REGIONS_OPTION'],
+    allCitiesOption: dynamicContent['DEFAULT_SERVICE_MAP_ALL_CITIES_OPTION'],
     allCategoriesOption:
-      dynamicContent['default_service_map_all_categories_option'],
+      dynamicContent['DEFAULT_SERVICE_MAP_ALL_CATEGORIES_OPTION'],
     myLocationOption: dynamicContent['default_service_map_my_location_option'],
     allServicesTypeOption: dynamicContent['default_all_services_type_option'],
     allProvidersOption: dynamicContent['default_all_providers_option'],
@@ -202,6 +209,10 @@ export function populateServiceMapStrings(dynamicContent: {
     },
     popupStrings: populatePopupStrings(dynamicContent),
     labelSearchInput: { label: dynamicContent['default_seach_input_text'] },
+    labelProvider: dynamicContent['labelProvider'],
+    labelAccessibility: dynamicContent['labelAccessibility'],
+    labelPopulations: dynamicContent['labelPopulations'],
+    labelServicesTypes: dynamicContent['labelServicesTypes'],
   };
 }
 
@@ -211,8 +222,8 @@ export function populateCategoriesSectionStrings(dynamicContent: {
 }): CardsListStrings {
   return {
     title: dynamicContent['default_information_title'],
-    //TODO: Update to the customized '<site_prefix>_information_description',
-    description: dynamicContent['default_information_description'],
+    description:
+      dynamicContent['signpost_info_palante-ecuador_information_description'],
   };
 }
 
@@ -285,8 +296,6 @@ export function getSelectTopicLabel(dynamicContent: {
   return dynamicContent['default_select_topic'];
 }
 
-// TODO(annkats): add populateServiceMapStrings() once Service map becomes a Shared component.
-
 export function populateArticleContentStrings(dynamicContent: {
   [key: string]: string;
 }): ArticleContentStrings {
@@ -303,6 +312,8 @@ export function populateMenuOverlayStrings(dynamicContent: {
     home: dynamicContent['default_menu_home_title'],
     information: dynamicContent['default_information_title'],
     about: dynamicContent['default_menu_about_title'],
+    disclaimer: dynamicContent['default_menu_disclaimer_title'],
+    services: dynamicContent['default_menu_services_title'],
   };
 }
 
@@ -404,7 +415,6 @@ export function populateFilterSelectStrings(dynamicContent: {
     mostPopular: dynamicContent['default_most_popular_filter_option'],
   };
 }
-
 export function populatePopupStrings(dynamicContent: {
   [key: string]: string;
 }): PopupStrings {
