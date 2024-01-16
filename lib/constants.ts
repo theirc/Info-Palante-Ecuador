@@ -82,3 +82,13 @@ export const SEARCH_RESULTS_PAGE_INDEX: AlgoliaSearchIndex = {
 export const DIRECTUS_AUTH_TOKEN = process.env.DIRECTUS_TOKEN ?? '';
 export const DIRECTUS_COUNTRY_ID = 18;
 export const DIRECTUS_INSTANCE = 'https://directus-irc.azurewebsites.net/';
+
+export interface CountrySelectorInterface {
+  title: string;
+  url: string;
+}
+
+export const COUNTRY_SELECTOR: CountrySelectorInterface[] = [
+  { title: 'Colombia', url: 'https://www.infopalante.org/es' },
+  { title: 'Peru', url: 'https://info-palante-peru.vercel.app/' },
+];
