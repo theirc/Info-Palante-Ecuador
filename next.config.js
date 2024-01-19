@@ -27,7 +27,11 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'signpost-greece.zendesk.com',
+        hostname: 'signpost-ecuador.zendesk.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'directus-irc.azurewebsites.net',
       },
     ],
   },
