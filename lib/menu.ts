@@ -28,10 +28,43 @@ export function getFooterItems(
 ): MenuOverlayItem[] {
   let items: MenuOverlayItem[] = [];
   items.push({
-    key: 'disclaimer',
-    label: strings.disclaimer,
-    href: `/articles/12998010069277`,
+    key: 'mapa-servicios',
+    label: 'Mapa de servicios del GIFMM',
+    href: 'https://mapeo-de-servicios.gifmm-colombia.site/',
   });
+  items.push({
+    key: 'gifmm-contigo',
+    label: 'GIFMM Contigo',
+    href: 'https://gifmm-contigo.com/ ',
+  });
+  items.push({
+    key: 'centroamerica',
+    label: 'Centroamérica: Cuéntanos ',
+    href: 'https://www.cuentanos.org/',
+  });
+  items.push({
+    key: 'Colombia',
+    label: 'Colombia: InfoPalante',
+    href: 'https://www.infopalante.org/es',
+  });
+  items.push({
+    key: 'México',
+    label: 'México: InfoDigna',
+    href: 'https://www.infodigna.org',
+  });
+
+  items.push({
+    key: 'ee-uu',
+    label: 'EE.UU: ImportaMi',
+    href: 'https://www.importami.org/',
+  });
+
+  items.push({
+    key: 'ven-info',
+    label: 'Ven Informado',
+    href: 'https://www.veninformado.pe/',
+  });
+
   return items;
 }
 
