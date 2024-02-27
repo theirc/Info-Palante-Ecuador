@@ -28,14 +28,9 @@ export function getFooterItems(
 ): MenuOverlayItem[] {
   let items: MenuOverlayItem[] = [];
   items.push({
-    key: 'mapa-servicios',
-    label: 'Mapa de servicios del GIFMM',
-    href: 'https://mapeo-de-servicios.gifmm-colombia.site/',
-  });
-  items.push({
-    key: 'gifmm-contigo',
-    label: 'GIFMM Contigo',
-    href: 'https://gifmm-contigo.com/ ',
+    key: 'ven-info',
+    label: 'Perú: Veninformado',
+    href: 'https://www.veninformado.pe/',
   });
   items.push({
     key: 'centroamerica',
@@ -57,12 +52,6 @@ export function getFooterItems(
     key: 'ee-uu',
     label: 'EE.UU: ImportaMi',
     href: 'https://www.importami.org/',
-  });
-
-  items.push({
-    key: 'ven-info',
-    label: 'Ven Informado',
-    href: 'https://www.veninformado.pe/',
   });
 
   return items;
